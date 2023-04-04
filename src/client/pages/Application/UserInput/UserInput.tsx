@@ -2,9 +2,10 @@ import React, { FC } from 'react';
 import dayjs from 'dayjs';
 
 import { UserInputProps } from './types';
+import { Relationship } from '../../../../server/users/entities';
 
 
-export const UserInput: FC<UserInputProps> = ({user, SetUser, DeleteUser, userErrors}) => {
+export const UserInput: FC<UserInputProps> = ({user, index, SetUser, DeleteUser, userErrors}) => {
 
 	return (
 		<>
@@ -115,6 +116,28 @@ export const UserInput: FC<UserInputProps> = ({user, SetUser, DeleteUser, userEr
 							{userErrors.find(entry => entry.field === 'zipCode')?.error}
 						</div>
 					</div>
+					{index !== 0 && (
+						<div>
+							<label>
+								Relationship
+							</label>
+							<br />
+							<select
+								className={`form-control ${userErrors.find(entry => entry.field === "relationship") ? 'is-invalid' : ''}`}
+								value={user.relationship}
+								onChange={(e) => SetUser({...user, relationship: e.target.value})}
+							>
+								<option value={Relationship.FRIEND}>Friend</option>
+								<option value={Relationship.PARENT}>Parent</option>
+								<option value={Relationship.SIBLING}>Sibling</option>
+								<option value={Relationship.SPOUSE}>Spouse</option>
+								<option value={Relationship.OTHER}>Other</option>
+							</select>
+							<div className="invalid-feedback">
+								{userErrors.find(entry => entry.field === 'relationship')?.error}
+							</div>
+						</div>
+					)}
 					
 					<button
 						type="button" className="btn btn-outline-danger w-100 mt-3"

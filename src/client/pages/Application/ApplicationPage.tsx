@@ -33,11 +33,12 @@ export const ApplicationPage: FC<ApplicationProps> = ({application, setApplicati
 					Add User
 				</button>
 				<div className="d-flex" style={{flexWrap: "wrap"}}>
-					{application.users.map(user => {
+					{application.users.map((user, index) => {
 						return (
 							<div key={`user-${user.id}`}>
 								<UserInputConnector
 									user={user}
+									index={index}
 									application={application}
 									setApplication={setApplication}
 									userErrors={

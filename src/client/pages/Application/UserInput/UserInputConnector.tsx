@@ -5,7 +5,7 @@ import { UserInputConnectorProps } from './types';
 import { UserInput } from './UserInput';
 
 
-export const UserInputConnector: FC<UserInputConnectorProps> = ({user, application, setApplication, userErrors}) => {
+export const UserInputConnector: FC<UserInputConnectorProps> = ({user, index, application, setApplication, userErrors}) => {
     const DeleteUser = async() => {
         try {
             const res = await fetch(
@@ -39,6 +39,7 @@ export const UserInputConnector: FC<UserInputConnectorProps> = ({user, applicati
             ) : (
                 <UserInput
                     user={user}
+                    index={index}
                     SetUser={SetUser}
                     DeleteUser={DeleteUser}
                     userErrors={userErrors}
