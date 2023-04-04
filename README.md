@@ -2,7 +2,7 @@
 To setup after pulling the repo locally:
 - Run `npm i` within the base of the project directory
 - DB Stuff
-    - Create a `.env` using the `example.env` file and filling in any info that may be different when connecting to your locally hosted db
+    - Create a `.env` using the `example.env` file and fill in any info that may be different when connecting to your locally hosted db
         - This project is set up to run mysql/mariadb
         - The `DB_NAME` value in the `.env` can be any name that you do not currently have a database being called
     - To create a new database using a built in script run `ts-node src/server/db/createDb`
